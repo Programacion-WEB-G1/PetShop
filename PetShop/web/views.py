@@ -26,3 +26,6 @@ def recupera (request):
 
 def user (request):
     return render (request,'web/user_reg.html')
+
+def base (request):
+    return render (request, 'web/base.html')
