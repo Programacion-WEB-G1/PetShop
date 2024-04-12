@@ -19,7 +19,7 @@ def iniciar (request):
     return render (request,'web/iniciarsesion.html')
 
 def perfil (request):
-    return render (request,'web/pefil.html')
+    return render (request,'web/perfil.html')
 
 def recupera (request):
     return render (request,'web/recuperapass.html')
