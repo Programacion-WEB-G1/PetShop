@@ -15,12 +15,19 @@ nav {
     padding: 10px;
     text-align: center;
 }
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+nav li {
+    display: inline-block;
+    margin-right: 10px;
+}
 nav a {
     color: #fff;
     text-decoration: none;
     padding: 5px 10px;
-    /*margin: 0 10px;*/
-    display: inline-block;
 }
 nav a:hover {
     background-color: #999;
