@@ -1,3 +1,6 @@
+{% extends 'web/base.html' %}
+{% block content %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -8,43 +11,33 @@
     rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
     crossorigin="anonymous"/>
-    <link rel="stylesheet" href="../estilos2.css">
+    <link rel="stylesheet" href="{% static 'web/css/estilos2.css' %}">
     <title> Tienda de Mascotas </title>
 </head>
 <body>
-    <header>
-        <h1>Alimento Perro</h1>
-    </header>
-    <nav>
-        <a href="ejemplo.html">Inicio</a>
-        <a href="User_reg.html">Registro Clientes</a>
-        <a href="iniciarsesion.html">Iniciar Sesion</a>
-        <a href="miperfil.html">Mi Perfil</a>
-        <a href="carro.html">Mi Carro</a>
-    </nav>
+    
     <section>
         <div class="product">
-            <img class="product-img" src="Imagenes/orijen_dog.jpeg" alt="Orijen Dog">
+            <img src="{% static 'web/Imagenes/orijen_dog.jpg' %}" alt="Orijen Dog">            
             <h3>Orijen Original Dog</h3>
             <p>Alimento para perros con pollo, pavo de corral, pescado y huevos. Formato: 5,9 Kg.</p>
             <p>Precio: $69.900 CLP</p>
             <button class="add-to-cart">Agregar al Carro</button>
         </div>
-
         <div class="product">
-            <img src="Imagenes/acana_dog.jpeg" alt="Producto 2">
+            <img src="{% static 'web/Imagenes/acana_dog.jpg' %}" alt="Acana Dog">            
             <h3>Acana Regionals Wild Atlantic Dog</h3>
             <p>Alimento seco sabor pescado de hábitat natural y verduras frescas. Formato: 11,3 Kg.</p>
             <p>Precio: $89.500</p>
             <button class="add-to-cart">Agregar al Carro</button>
         </div>
-        <!-- Añade más productos según sea necesario -->
     </section>
     <div>
-        <a class="btn btn-primary" href="ejemplo.html">Volver</a>
+        <a class="btn btn-primary" href="{% url 'index' %}">Volver</a>
     </div>
     <footer>
         <p>&copy; 2024 Tienda de Mascotas. Todos los derechos reservados.</p>
     </footer>
 </body>
 </html>
+{% endblock %}
