@@ -19,7 +19,8 @@ nav a {
     color: #fff;
     text-decoration: none;
     padding: 5px 10px;
-    margin: 0 10px;
+    /*margin: 0 10px;*/
+    display: inline-block;
 }
 nav a:hover {
     background-color: #999;
