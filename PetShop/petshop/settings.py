@@ -86,7 +86,7 @@ WSGI_APPLICATION = 'petshop.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.oracle',
-        'NAME': '127.0.0.1:1321/xe',
+        'NAME': '127.0.0.1:1521/xe',
         'USER': 'c##prueba',
         'PASSWORD': 'prueba',
         'TEST': {
