@@ -1,4 +1,4 @@
-{% extends 'web/base.html' %}
+{% extends 'web/base2.html' %}
 {% block content %}
 {% load static %}
 <!DOCTYPE html>
@@ -14,7 +14,20 @@
     
     <h2 class="text-center">Registro de Clientes</h2>
     <div class="container">
-        <form class="row">
+        <form class="row" action="" method="post">
+            <div class="col-lg-6 col-md-8 col-sm-10">
+                <label for="validationDefault01" class="form-label"> 
+                    <h3 class="text-center">Run</h3>
+                </label>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="validationDefault01"
+                    value=""
+                    required/>
+                <div class="valid-feedback"></div>
+            </div>
+
             <div class="col-lg-6 col-md-8 col-sm-10">
                 <label for="validationDefault01" class="form-label"> 
                     <h3 class="text-center">Nombres</h3>
@@ -58,18 +71,6 @@
             </div>
 
             <div class="col-lg-6 col-md-8 col-sm-10">
-                <label for="exampleInputEmail1">
-                    <h3 class="text-center">Email</h3>
-                </label>
-                <input
-                    type="email"
-                    class="form-control"
-                    id="exampleInputEmail1"
-                    aria-describedby="emailHelp"/>
-                <div class="valid-feedback"></div>
-            </div>
-
-            <div class="col-lg-6 col-md-8 col-sm-10">
                 <div class="col-auto">
                     <label for="inputPassword6" class="col-form-label">
                         <h3 class="text-center">Password</h3>
@@ -110,6 +111,18 @@
             </div>
 
             <div class="col-lg-6 col-md-8 col-sm-10">
+                <label for="exampleInputEmail1">
+                    <h3 class="text-center">Email</h3>
+                </label>
+                <input
+                    type="email"
+                    class="form-control"
+                    id="exampleInputEmail1"
+                    aria-describedby="emailHelp"/>
+                <div class="valid-feedback"></div>
+            </div>
+
+            <div class="col-lg-6 col-md-8 col-sm-10">
                 <label for="validationDefault05" class="form-label">
                     <h3 class="text-center">Fecha de Nacimiento</h3>
                 </label>
@@ -117,6 +130,16 @@
                     type="date"
                     class="form-control"
                     id="validationDefault05"/>
+            </div>
+
+            <div class="col-lg-6 col-md-8 col-sm-10">
+                <label for="validationDefault01" class="form-label">
+                    <h3 class="text-center">Ciudad</h3>
+                </label>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="validationDefault01"/>
             </div>
 
             <div class="col-lg-6 col-md-8 col-sm-10">
