@@ -15,8 +15,8 @@ def perro (request):
 def carro (request):
     return render (request,'web/carro.html')
 
-def iniciar (request):
-    return render (request,'web/iniciarsesion.html')
+def producto (request):
+    return render (request,'web/productos.html')
 
 def perfil (request):
     return render (request,'web/miperfil.html')
