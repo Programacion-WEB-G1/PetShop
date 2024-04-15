@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.contrib.auth import logout
 from .models import Usuario
 
 # Create your views here.
@@ -65,6 +66,10 @@ def user(request):
         return redirect('index')  # Redirecciona a la página de inicio
     else:
         return render(request, 'web/user_reg.html')
+    
+def cerrar_sesion(request):
+    logout(request)
+    return redirect('index')  # Redirecciona al inicio u otra página después de cerrar sesión
 
 def gato (request):
     return render (request,'web/gato.html')
@@ -83,9 +88,6 @@ def perfil (request):
 
 def recupera (request):
     return render (request,'web/recuperapass.html')
-
-#def user (request):
-#    return render (request,'web/user_reg.html')
 
 def base (request):
     return render (request, 'web/base.html')
