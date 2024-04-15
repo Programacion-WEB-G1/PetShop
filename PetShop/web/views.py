@@ -1,33 +1,35 @@
 from django.shortcuts import render, redirect
+from django.contrib import messages
+from django.contrib.auth import logout
 from .models import Usuario
 
 # Create your views here.
 
-def index (request):
+def index(request):
     if request.method == 'POST':
-        username_login = request.POST.get('user_login')
-        password = request.POST.get('password')
-        print("Datos del form", username_login, password)
-        usuarioBD = Usuario.objects.filter(username=username_login).first()
-        if usuarioBD is not None:
-            if usuarioBD.password == password:
-                if usuarioBD.perfil.perfil == "Administrador":
-                    print("Home administrador")
-                    return render(request, 'web/productos.html')
-                if usuarioBD.perfil.perfil == "Usuario":
-                    print("Home usuario")
-                    return render(request, 'web/productos.html')
+        user_login = request.POST.get('user_login')
+        pass_login = request.POST.get('pass_login')
+        print("Datos del formulario", user_login, pass_login)
+        try:
+            usuarioBD = Usuario.objects.get(username=user_login)
+            if usuarioBD.password == pass_login:
+                if usuarioBD.perfil.perfil == "Administrador" or usuarioBD.perfil.perfil == "Usuario":
+                    print("Inicio de sesión exitoso")
+                    return redirect('productos')  # Redirecciona a la página de productos
                 else:
-                    print("No se encontro perfil")
-                    return render(request,'web/index.html')
+                    print("No se encontró un perfil adecuado")
+                    messages.error(request, "Perfil incorrecto")
+                    return render(request, 'web/index.html')
             else:
-                print("Password incorrecta")
-                return render(request,'web/index.html')
-        else:
-            print("Usuario no existe")
-            return render(request,'web/index.html')
+                print("Contraseña incorrecta")
+                messages.error(request, "Contraseña incorrecta")
+                return render(request, 'web/index.html')
+        except Usuario.DoesNotExist:
+            print("Usuario no encontrado")
+            messages.error(request, "Usuario no encontrado")
+            return render(request, 'web/index.html')
     else:
-        return render(request,'web/index.html')
+        return render(request, 'web/index.html')
 
 def user(request):
     if request.method == 'POST':
@@ -61,9 +63,13 @@ def user(request):
         )
         usuario.save()
 
-        return render(request, 'web/index.html')
+        return redirect('index')  # Redirecciona a la página de inicio
     else:
-        return render(request,'web/user_reg.html')
+        return render(request, 'web/user_reg.html')
+    
+def cerrar_sesion(request):
+    logout(request)
+    return redirect('index')  # Redirecciona al inicio u otra página después de cerrar sesión
 
 def gato (request):
     return render (request,'web/gato.html')
@@ -82,9 +88,6 @@ def perfil (request):
 
 def recupera (request):
     return render (request,'web/recuperapass.html')
-
-#def user (request):
-#    return render (request,'web/user_reg.html')
 
 def base (request):
     return render (request, 'web/base.html')

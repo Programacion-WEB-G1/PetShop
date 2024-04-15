@@ -14,7 +14,7 @@
     
     <h2 class="text-center">Registro de Clientes</h2>
     <div class="container">
-        <form class="row" action="" method="post">
+        <form class="row" action="{% url 'user' %}" method="post">
             {% csrf_token %}
             <div class="col-lg-6 col-md-8 col-sm-10">
                 <label for="run" class="form-label"> 
