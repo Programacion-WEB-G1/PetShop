@@ -5,10 +5,10 @@ from .models import Usuario
 
 def index (request):
     if request.method == 'POST':
-        username = request.POST.get('user')
+        username_login = request.POST.get('user_login')
         password = request.POST.get('password')
-        print("Datos del form", username, password)
-        usuarioBD = Usuario.objects.filter(username=username).first()
+        print("Datos del form", username_login, password)
+        usuarioBD = Usuario.objects.filter(username=username_login).first()
         if usuarioBD is not None:
             if usuarioBD.password == password:
                 if usuarioBD.perfil.perfil == "Administrador":
@@ -36,11 +36,16 @@ def user(request):
         nombres = request.POST.get('nombres')
         apellidos = request.POST.get('apellidos')
         username = request.POST.get('username')
+        password = request.POST.get('password')
         email = request.POST.get('email')
         fechanac = request.POST.get('fechanac')
         ciudad = request.POST.get('ciudad')
         direccion = request.POST.get('direccion')
-        perfil_id = request.POST.get('perfil')  # Obtener el ID del perfil desde el formulario
+        print("---------------------------------------------------------")
+        print("---------------------------------------------------------")
+        print("Datos", run, nombres, apellidos, username, password, email, fechanac, ciudad, direccion)
+        print("---------------------------------------------------------")
+        print("---------------------------------------------------------")
 
         # Guardar los datos en la base de datos
         usuario = Usuario(
@@ -48,11 +53,11 @@ def user(request):
             nombres=nombres,
             apellidos=apellidos,
             username=username,
+            password=password,
             email=email,
             fechanac=fechanac,
-            ciudad_id=ciudad,  # Asignar el ID de la ciudad
+            ciudad_id=ciudad,
             direccion=direccion,
-            perfil_id=perfil_id,  # Asignar el ID del perfil
         )
         usuario.save()
 

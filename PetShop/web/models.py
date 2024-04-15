@@ -15,9 +15,9 @@ class Perfil(models.Model):
 
     def _str_(self):
         return self.perfil
-    
+
 class Usuario(models.Model):
-    run = models.IntegerField(primary_key=True, verbose_name='run', unique=True)
+    run = models.CharField(primary_key=True,max_length=11, verbose_name='run',default='00000000-0', unique=True)
     nombres = models.CharField(max_length=60,verbose_name='nombres')
     apellidos = models.CharField(max_length=60,verbose_name='apellidos')
     username = models.CharField(max_length=10, verbose_name='username')
@@ -26,4 +26,4 @@ class Usuario(models.Model):
     fechanac = models.DateField(null=True)
     ciudad = models.ForeignKey(Ciudad, on_delete=models.CASCADE, related_name='Usuarios', null=True)
     direccion = models.CharField(max_length=100,verbose_name='direccion', null=True)
-    perfil = models.ForeignKey(Perfil, on_delete=models.CASCADE, related_name='Usuario', null=True)
+    perfil = models.ForeignKey(Perfil, on_delete=models.CASCADE, related_name='Usuario', default='2', null=True)

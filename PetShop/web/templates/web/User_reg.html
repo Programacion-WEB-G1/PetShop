@@ -15,47 +15,51 @@
     <h2 class="text-center">Registro de Clientes</h2>
     <div class="container">
         <form class="row" action="" method="post">
+            {% csrf_token %}
             <div class="col-lg-6 col-md-8 col-sm-10">
-                <label for="validationDefault01" class="form-label"> 
+                <label for="run" class="form-label"> 
                     <h3 class="text-center">Run</h3>
                 </label>
                 <input
                     type="text"
                     class="form-control"
-                    id="validationDefault01"
+                    id="run"
+                    name="run"
                     value=""
                     required/>
                 <div class="valid-feedback"></div>
             </div>
 
             <div class="col-lg-6 col-md-8 col-sm-10">
-                <label for="validationDefault01" class="form-label"> 
+                <label for="nombres" class="form-label"> 
                     <h3 class="text-center">Nombres</h3>
                 </label>
                 <input
                     type="text"
                     class="form-control"
-                    id="validationDefault01"
+                    id="nombres"
+                    name="nombres"
                     value=""
                     required/>
                 <div class="valid-feedback"></div>
             </div>
 
             <div class="col-lg-6 col-md-8 col-sm-10">
-                <label for="validationDefault02" class="form-label">
+                <label for="apellidos" class="form-label">
                     <h3 class="text-center">Apellidos</h3>
                 </label>
                 <input
                     type="text"
                     class="form-control"
-                    id="validationDefault02"
+                    id="apellidos"
+                    name="apellidos"
                     value=""
                     required/>
                 <div class="valid-feedback"></div>
             </div>
 
             <div class="col-lg-6 col-md-8 col-sm-10">
-                <label for="validationDefaultUsername" class="form-label">
+                <label for="username" class="form-label">
                     <h3 class="text-center">Username</h3>
                 </label>
                 <div class="input-group">
@@ -63,7 +67,8 @@
                     <input
                         type="text"
                         class="form-control"
-                        id="validationDefaultUsername"
+                        id="username"
+                        name="username"
                         aria-describedby="inputGroupPrepend2"
                         required/>
                     <div class="valid-feedback"></div>
@@ -72,7 +77,7 @@
 
             <div class="col-lg-6 col-md-8 col-sm-10">
                 <div class="col-auto">
-                    <label for="inputPassword6" class="col-form-label">
+                    <label for="password" class="col-form-label">
                         <h3 class="text-center">Password</h3>
                     </label>
                 </div>
@@ -81,7 +86,8 @@
                         type="password"
                         maxlength="13"
                         minlength="8"
-                        id="inputPassword6"
+                        id="password"
+                        name="password"
                         class="form-control"
                         aria-describedby="passwordHelpInline"/>
                 </div>
@@ -92,7 +98,7 @@
 
             <div class="col-lg-6 col-md-8 col-sm-10">
                 <div class="col-auto">
-                    <label for="inputPassword7" class="col-form-label">
+                    <label for="password_confirm" class="col-form-label">
                         <h3 class="text-center">Repite tu Password</h3>
                     </label>
                 </div>
@@ -101,7 +107,8 @@
                         type="password"
                         maxlength="13"
                         minlength="8"
-                        id="inputPassword7"
+                        id="password_confirm"
+                        name="password_confirm"
                         class="form-control"
                         aria-describedby="passwordHelpInline"/>
                 </div>
@@ -111,50 +118,54 @@
             </div>
 
             <div class="col-lg-6 col-md-8 col-sm-10">
-                <label for="exampleInputEmail1">
+                <label for="email">
                     <h3 class="text-center">Email</h3>
                 </label>
                 <input
                     type="email"
                     class="form-control"
-                    id="exampleInputEmail1"
+                    id="email"
+                    name="email"
                     aria-describedby="emailHelp"/>
                 <div class="valid-feedback"></div>
             </div>
 
             <div class="col-lg-6 col-md-8 col-sm-10">
-                <label for="validationDefault05" class="form-label">
+                <label for="fecha_nacimiento" class="form-label">
                     <h3 class="text-center">Fecha de Nacimiento</h3>
                 </label>
                 <input
                     type="date"
                     class="form-control"
-                    id="validationDefault05"/>
+                    id="fechanac"
+                    name="fechanac"/>
             </div>
 
             <div class="col-lg-6 col-md-8 col-sm-10">
-                <label for="validationDefault01" class="form-label">
+                <label for="ciudad" class="form-label">
                     <h3 class="text-center">Ciudad</h3>
                 </label>
                 <input
                     type="text"
                     class="form-control"
-                    id="validationDefault01"/>
+                    id="ciudad"
+                    name="ciudad"/>
             </div>
 
             <div class="col-lg-6 col-md-8 col-sm-10">
-                <label for="validationDefault05" class="form-label">
+                <label for="direccion" class="form-label">
                     <h3 class="text-center">Dirección</h3>
                 </label>
                 <input
                     type="text"
                     class="form-control"
-                    id="validationDefault05"/>
+                    id="direccion"
+                    name="direccion"/>
             </div>
 
             <div class="button-container">
                 <button class="btn btn-primary" onclick="Validar();">Enviar</button>
-                <button type="clear" class="btn btn-primary">Limpiar</button>
+                <button type="reset" class="btn btn-primary">Limpiar</button>
                 <div>
                     <a class="btn btn-primary" href="{% url 'index' %}">Volver</a>
                 </div>
