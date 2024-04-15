@@ -1,10 +1,33 @@
 from django.shortcuts import render
-
+from .models import Usuario
 
 # Create your views here.
 
 def index (request):
-    return render (request,'web/index.html')
+    if request.method == 'POST':
+        username = request.POST.get('user')
+        password = request.POST.get('password')
+        print("Datos del form", username, password)
+        usuarioBD = Usuario.objects.filter(username=username).first()
+        if usuarioBD is not None:
+            if usuarioBD.password == password:
+                if usuarioBD.perfil == 1:
+                    print("Home administrador")
+                    return render(request, 'web/productos.html')
+                if usuarioBD.perfil == 2:
+                    print("Home usuario")
+                    return render(request, 'web/productos.html')
+                else:
+                    print("No se encontro perfil")
+                    return render(request,'web/index.html')
+            else:
+                print("Password incorrecta")
+                return render(request,'web/index.html')
+        else:
+            print("Usuario no existe")
+            return render(request,'web/index.html')
+    else:
+        return render(request,'web/index.html')
 
 def gato (request):
     return render (request,'web/gato.html')
