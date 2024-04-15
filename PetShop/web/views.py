@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Usuario
 
 # Create your views here.
@@ -29,6 +29,37 @@ def index (request):
     else:
         return render(request,'web/index.html')
 
+def user(request):
+    if request.method == 'POST':
+        # Obtener los datos del formulario
+        run = request.POST.get('run')
+        nombres = request.POST.get('nombres')
+        apellidos = request.POST.get('apellidos')
+        username = request.POST.get('username')
+        email = request.POST.get('email')
+        fechanac = request.POST.get('fechanac')
+        ciudad = request.POST.get('ciudad')
+        direccion = request.POST.get('direccion')
+        perfil_id = request.POST.get('perfil')  # Obtener el ID del perfil desde el formulario
+
+        # Guardar los datos en la base de datos
+        usuario = Usuario(
+            run=run,
+            nombres=nombres,
+            apellidos=apellidos,
+            username=username,
+            email=email,
+            fechanac=fechanac,
+            ciudad_id=ciudad,  # Asignar el ID de la ciudad
+            direccion=direccion,
+            perfil_id=perfil_id,  # Asignar el ID del perfil
+        )
+        usuario.save()
+
+        return render(request, 'web/index.html')
+    else:
+        return render(request,'web/user_reg.html')
+
 def gato (request):
     return render (request,'web/gato.html')
 
@@ -47,8 +78,8 @@ def perfil (request):
 def recupera (request):
     return render (request,'web/recuperapass.html')
 
-def user (request):
-    return render (request,'web/user_reg.html')
+#def user (request):
+#    return render (request,'web/user_reg.html')
 
 def base (request):
     return render (request, 'web/base.html')
