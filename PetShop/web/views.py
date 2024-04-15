@@ -11,10 +11,10 @@ def index (request):
         usuarioBD = Usuario.objects.filter(username=username).first()
         if usuarioBD is not None:
             if usuarioBD.password == password:
-                if usuarioBD.perfil == 1:
+                if usuarioBD.perfil.perfil == "Administrador":
                     print("Home administrador")
                     return render(request, 'web/productos.html')
-                if usuarioBD.perfil == 2:
+                if usuarioBD.perfil.perfil == "Usuario":
                     print("Home usuario")
                     return render(request, 'web/productos.html')
                 else:
