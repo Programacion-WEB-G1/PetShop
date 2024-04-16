@@ -27,3 +27,12 @@ class Usuario(models.Model):
     ciudad = models.ForeignKey(Ciudad, on_delete=models.CASCADE, related_name='Usuarios', null=True)
     direccion = models.CharField(max_length=100,verbose_name='direccion', null=True)
     perfil = models.ForeignKey(Perfil, on_delete=models.CASCADE, related_name='Usuario', default='2', null=True)
+
+class Producto(models.Model):
+    id_producto = models.CharField(max_length=20, primary_key=True, verbose_name='id_producto')
+    descripcion = models.CharField(max_length=100, verbose_name='Descripcion')
+    precio = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Precio')
+    imagen = models.ImageField(upload_to='productos/', null=True, blank=True, verbose_name='Imagen del producto')
+
+    def __str__(self):
+        return self.descripcion
