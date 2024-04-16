@@ -74,8 +74,12 @@ def cerrar_sesion(request):
 def productos_perro(request):
     categoria_perro = Categoria.objects.get(nombre_categoria="Comida Perro")
     productos_perro = Producto.objects.filter(categoria=categoria_perro)
-    print(productos_perro)  # Agrega esta línea para imprimir los productos en la consola
     return render(request, 'web/perro.html', {'productos_perro': productos_perro})
+
+def productos_gato(request):
+    categoria_gato = Categoria.objects.get(nombre_categoria="Comida Gato")
+    productos_gato = Producto.objects.filter(categoria=categoria_gato)
+    return render(request, 'web/gato.html', {'productos_gato': productos_gato})
 
 def gato (request):
     return render (request,'web/gato.html')
