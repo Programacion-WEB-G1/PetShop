@@ -45,32 +45,53 @@ document.getElementById('btn-editar').addEventListener('click', function() {
     document.getElementById('form-edicion').style.display = 'flex';
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+    // Obtener y mostrar los elementos del carrito al cargar la página
+    fetch('/obtener-carrito/')
+    .then(response => response.json())
+    .then(data => {
+        const cartItems = document.getElementById('cart-items');
+        cartItems.innerHTML = ''; // Limpiar los elementos del carrito existentes
 
-// Carrito
+        // Iterar sobre los elementos del carrito recibidos del servidor
+        data.cart.forEach(item => {
+            const itemElement = document.createElement('div');
+            itemElement.textContent = `Producto: ${item.nombre}, Precio: ${item.precio}`;
+            cartItems.appendChild(itemElement);
+        });
 
-// Obtener todos los botones "Agregar al Carro"
-const addToCartButtons = document.querySelectorAll('.add-to-cart');
+        // Agregar event listener para el botón "Agregar al Carrito"
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function() {
+                const productId = this.dataset.productId; // Obtener el ID del producto
+                agregarAlCarrito(productId); // Llamar a la función para agregar al carrito
+            });
+        });
+    })
+    .catch(error => console.error('Error:', error));
 
-// Agregar evento click a cada botón
-addToCartButtons.forEach(button => {
-    button.addEventListener('click', addToCart);
+    // Resto del código...
 });
 
-// Función para agregar un producto al carrito
-function addToCart(event) {
-    // Obtener la información del producto
-    const product = event.target.parentNode;
-    const productName = product.querySelector('h3').innerText;
-    const productPrice = product.querySelector('p:nth-child(3)').innerText;
-
-    // Crear un nuevo elemento para el carrito
-    const cartItem = document.createElement('div');
-    cartItem.classList.add('cart-item');
-    cartItem.innerHTML = `
-        <h3>${productName}</h3>
-        <p>${productPrice}</p>
-    `;
-
-    // Agregar el nuevo elemento al contenedor del carrito
-    document.getElementById('cart-items').appendChild(cartItem);
+function agregarAlCarrito(productId) {
+    fetch('/agregar-al-carrito/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': getCookie('csrftoken')
+        },
+        body: JSON.stringify({ producto_id: productId })
+    })
+    .then(response => {
+        if (response.ok) {
+            alert('Producto agregado al carrito correctamente');
+            // Aquí podrías realizar alguna acción adicional, como actualizar la vista del carrito
+        } else {
+            alert('Error al agregar el producto al carrito');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Error al agregar el producto al carrito');
+    });
 }

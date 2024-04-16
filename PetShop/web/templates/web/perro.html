@@ -22,7 +22,7 @@
             <h3>{{ producto.nombre }}</h3>
             <p>{{ producto.descripcion }}</p>
             <p>Precio: {{ producto.precio }}</p>
-            <button class="add-to-cart">Agregar al Carro</button>
+            <button class="add-to-cart" id="add-to-cart-{{ producto.id }}">Agregar al Carro</button>
         </div>
         {% endfor %}
     </section>
