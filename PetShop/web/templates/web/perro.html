@@ -14,23 +14,17 @@
     <link rel="stylesheet" href="{% static 'web/css/estilos2.css' %}">
     <title> Tienda de Mascotas </title>
 </head>
-<body>
-    
+<body>    
     <section>
+        {% for producto in productos_perro %}
         <div class="product">
-            <img src="{% static 'web/Imagenes/orijen_dog.jpg' %}" alt="Orijen Dog">            
-            <h3>Orijen Original Dog</h3>
-            <p>Alimento para perros con pollo, pavo de corral, pescado y huevos. Formato: 5,9 Kg.</p>
-            <p>Precio: $69.900 CLP</p>
+            <img src="{% static producto.imagen %}" alt="{{ producto.descripcion }}">
+            <h3>{{ producto.descripcion }}</h3>
+            <p>{{ producto.descripcion }}</p>
+            <p>Precio: {{ producto.precio }}</p>
             <button class="add-to-cart">Agregar al Carro</button>
         </div>
-        <div class="product">
-            <img src="{% static 'web/Imagenes/acana_dog.jpg' %}" alt="Acana Dog">            
-            <h3>Acana Regionals Wild Atlantic Dog</h3>
-            <p>Alimento seco sabor pescado de hábitat natural y verduras frescas. Formato: 11,3 Kg.</p>
-            <p>Precio: $89.500</p>
-            <button class="add-to-cart">Agregar al Carro</button>
-        </div>
+        {% endfor %}
     </section>
     <div>
         <a class="btn btn-primary" href="/producto">Volver</a>
