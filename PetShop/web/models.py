@@ -37,10 +37,11 @@ class Categoria(models.Model):
     
 class Producto(models.Model):
     id_producto = models.CharField(max_length=20, primary_key=True, verbose_name='id_producto')
+    nombre = models.CharField(max_length=100, verbose_name='Nombre del producto', null=True)
     descripcion = models.CharField(max_length=100, verbose_name='Descripcion')
     precio = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Precio')
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE, null=True)
     imagen = models.ImageField(upload_to='productos/', null=True, blank=True, verbose_name='Imagen del producto')
 
     def __str__(self):
-        return self.descripcion
+        return self.nombre
