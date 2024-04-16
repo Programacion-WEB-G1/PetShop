@@ -12,24 +12,17 @@
     <link rel="stylesheet" href="{% static 'web/css/estilos2.css' %}">
     <title>Tienda de Mascotas</title>
 </head>
-<body>
-    
+<body>    
     <section>
+        {% for producto in productos_gato %}
         <div class="product">
-            <img src="{% static 'web/Imagenes/fit_gato.jpg' %}" alt="Fit Gato">            
-            <h3>Fit Formula Gato Adulto</h3>
-            <p>Alimento premium para gatos adultos de 1 a 7 años. Formato: 10 Kg.</p>
-            <p>Precio: $24.900 CLP</p>
+            <img src="{{ producto.imagen.url }}" alt="{{ producto.descripcion }}">
+            <h3>{{ producto.nombre }}</h3>
+            <p>{{ producto.descripcion }}</p>
+            <p>Precio: {{ producto.precio }}</p>
             <button class="add-to-cart">Agregar al Carro</button>
         </div>
-
-        <div class="product">
-            <img src="{% static 'web/Imagenes/bravery_cat.jpg' %}" alt="Bravery Gato">            
-            <h3>Bravery Salmon Adult Cat</h3>
-            <p>Alimento completo para gatos adultos con salmón. Formato: 7 Kg.</p>
-            <p>Precio: $55.500</p>
-            <button class="add-to-cart">Agregar al Carro</button>
-        </div>
+        {% endfor %}
     </section>
     <div>
         <a class="btn btn-primary" href="/producto">Volver</a>

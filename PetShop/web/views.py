@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import logout
-from .models import Usuario
+from django.http import JsonResponse
+from .models import Usuario, Categoria, Producto
 
 # Create your views here.
 
@@ -70,6 +71,23 @@ def user(request):
 def cerrar_sesion(request):
     logout(request)
     return redirect('index')  # Redirecciona al inicio u otra página después de cerrar sesión
+
+def productos_perro(request):
+    categoria_perro = Categoria.objects.get(nombre_categoria="Comida Perro")
+    productos_perro = Producto.objects.filter(categoria=categoria_perro)
+    return render(request, 'web/perro.html', {'productos_perro': productos_perro})
+
+def productos_gato(request):
+    categoria_gato = Categoria.objects.get(nombre_categoria="Comida Gato")
+    productos_gato = Producto.objects.filter(categoria=categoria_gato)
+    return render(request, 'web/gato.html', {'productos_gato': productos_gato})
+
+def agregar_al_carrito(request):
+    if request.method == 'POST':
+        producto_id = request.POST.get('producto_id')
+        return JsonResponse({'mensaje': f'Producto {producto_id} agregado al carrito correctamente'})
+    else:
+        return JsonResponse({'error': 'La solicitud debe ser de tipo POST'})
 
 def gato (request):
     return render (request,'web/gato.html')
