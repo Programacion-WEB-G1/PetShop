@@ -18,8 +18,8 @@
     <section>
         {% for producto in productos_perro %}
         <div class="product">
-            <img src="{% static producto.imagen %}" alt="{{ producto.descripcion }}">
-            <h3>{{ producto.descripcion }}</h3>
+            <img src="{{ producto.imagen.url }}" alt="{{ producto.descripcion }}">
+            <h3>{{ producto.nombre }}</h3>
             <p>{{ producto.descripcion }}</p>
             <p>Precio: {{ producto.precio }}</p>
             <button class="add-to-cart">Agregar al Carro</button>
