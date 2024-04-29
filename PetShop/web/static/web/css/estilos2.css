@@ -153,20 +153,20 @@ button {
 }
 
 .dog-image {
-    max-width: 300px; 
-    max-height: 300px; 
-    display: block;
-    margin: auto;
-    margin-bottom: 10px;
+    max-width: 200px; /* Establecer el ancho máximo de las imágenes */
+    max-height: 200px; /* Establecer la altura máxima de las imágenes */
+    display: block; /* Mostrar la imagen como bloque para centrarla */
+    margin: auto; /* Centrar la imagen horizontalmente */
+    margin-bottom: 10px; /* Añadir espacio debajo de la imagen */
 }
 
 .dog-breed-card {
-    width: calc(33.33% - 20px);
-    margin: 10px; 
-    text-align: center; 
-    display: inline-block; 
+    width: calc(33.33% - 20px); /* Establecer el ancho de las tarjetas de raza de perros */
+    margin: 10px; /* Añadir espacio entre las tarjetas */
+    text-align: center; /* Centrar el contenido de la tarjeta horizontalmente */
+    display: inline-block; /* Mostrar las tarjetas en línea */
 }
 
 .dog-breeds-container {
-    text-align: center;
+    text-align: center; /* Centrar el contenido del contenedor */
 }
