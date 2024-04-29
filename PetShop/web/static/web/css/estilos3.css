@@ -1,0 +1,42 @@
+.btn-primary {
+    margin-top: 10px;
+    margin-left: auto; /* Centrar horizontalmente */
+    margin-right: auto; /* Centrar horizontalmente */
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 5px;
+    background-color:#98DBC6;   
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    display: block; /* Para ocupar todo el ancho disponible */
+    width: fit-content; /* Ancho ajustado al contenido */
+}
+
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.dog-image {
+    max-width: 200px; 
+    max-height: 200px; 
+    display: block; 
+    margin: auto; 
+    margin-bottom: 10px; 
+}
+
+.dog-breed-card {
+    width: calc(33.33% - 20px); 
+    margin: 10px; 
+    text-align: center; 
+    display: inline-block; 
+}
+
+.dog-breeds-container {
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+}
