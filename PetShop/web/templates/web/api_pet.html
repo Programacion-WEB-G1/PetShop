@@ -15,23 +15,7 @@
     <title> Tienda de Mascotas </title>
 </head>
 <body>    
-    <section>
-        {% for producto in productos_perro %}
-        <div class="product">
-            <img src="{{ producto.imagen.url }}" alt="{{ producto.descripcion }}">
-            <h3>{{ producto.nombre }}</h3>
-            <p>{{ producto.descripcion }}</p>
-            <p>Precio: {{ producto.precio }}</p>
-            <button class="add-to-cart" id="add-to-cart-{{ producto.id }}">Agregar al Carro</button>
-        </div>
-        {% endfor %}
-    </section>
-    <div>
-        <a class="btn btn-primary" href="/producto">Volver</a>
-    </div>
-    <footer>
-        <p>&copy; 2024 Tienda de Mascotas. Todos los derechos reservados.</p>
-    </footer>
+    
 </body>
 </html>
 {% endblock %}
