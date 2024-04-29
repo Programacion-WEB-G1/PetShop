@@ -9,25 +9,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" 
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"/>
     <link rel="stylesheet" href="{% static 'web/css/estilos2.css' %}">
-    <style>
-        .dog-image {
-            max-width: 200px; /* Establecer el ancho máximo de las imágenes */
-            max-height: 200px; /* Establecer la altura máxima de las imágenes */
-            display: block; /* Mostrar la imagen como bloque para centrarla */
-            margin: auto; /* Centrar la imagen horizontalmente */
-            margin-bottom: 10px; /* Añadir espacio debajo de la imagen */
-        }
-
-        .dog-breed-card {
-            width: 220px; /* Establecer el ancho de las tarjetas de raza de perros */
-            margin: 10px; /* Añadir espacio entre las tarjetas */
-            text-align: center; /* Centrar el contenido de la tarjeta horizontalmente */
-        }
-    </style>
     <title> Razas de Perros </title>
 </head>
 <body>    
-    <h1>Razas de Perros</h1>
+    <h1>Lista de Algunas Razas de Perros</h1>
     <div id="dog-breeds-list" class="container dog-breeds-container"></div>
 
     <script>
@@ -59,7 +44,9 @@
 
             dogBreedsList.innerHTML = '';
 
-            for (const breed in dogBreedsData.message) {
+            const breedsToShow = Object.keys(dogBreedsData.message).slice(0, 20); // Limitar a 20 razas de perros
+
+            for (const breed of breedsToShow) {
                 const image = await getDogImage(breed);
 
                 if (image) {
