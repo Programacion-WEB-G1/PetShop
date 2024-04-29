@@ -111,4 +111,4 @@ def base (request):
     return render (request,'web/base.html')
 
 def api_pet(request):
-    return render (request,'web/api_pet.thml')
+    return render (request,'web/api_pet.html')
