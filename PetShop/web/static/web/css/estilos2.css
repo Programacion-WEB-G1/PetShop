@@ -170,3 +170,7 @@ button {
 .dog-breeds-container {
     text-align: center; /* Centrar el contenido del contenedor */
 }
+
+h1 {
+    text-align: center; /* Centrar el título horizontalmente */
+}
