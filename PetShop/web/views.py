@@ -108,4 +108,7 @@ def recupera (request):
     return render (request,'web/recuperapass.html')
 
 def base (request):
-    return render (request, 'web/base.html')
+    return render (request,'web/base.html')
+
+def api_pet(request):
+    return render (request,'web/api_pet.thml')
