@@ -44,7 +44,7 @@
 
             dogBreedsList.innerHTML = '';
 
-            const breedsToShow = Object.keys(dogBreedsData.message).slice(0, 21);
+            const breedsToShow = Object.keys(dogBreedsData.message).slice(0, 10);
 
             for (const breed of breedsToShow) {
                 const image = await getDogImage(breed);
@@ -68,9 +68,6 @@
     <div>
         <a class="btn btn-primary" href="/producto">Volver</a>
     </div>
-    <footer>
-        <p>&copy; 2024 Tienda de Mascotas. Todos los derechos reservados.</p>
-    </footer>
 </body>
 </html>
 {% endblock %}
