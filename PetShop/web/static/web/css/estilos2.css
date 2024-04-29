@@ -153,11 +153,11 @@ button {
 }
 
 .dog-image {
-    max-width: 200px; 
-    max-height: 200px; 
-    display: block; 
-    margin: auto; 
-    margin-bottom: 10px; 
+    max-width: 300px; 
+    max-height: 300px; 
+    display: block;
+    margin: auto;
+    margin-bottom: 10px;
 }
 
 .dog-breed-card {
