@@ -16,9 +16,9 @@ def login(request):
     password = data.get('password')
     
     #Crear un nuevo usuario para token
-    from django.contrib.auth.models import User
-    user = User.objects.create_user(username=username,email='pepe@gmail.com',password=password)
-    user.save()
+    #from django.contrib.auth.models import User
+    #user = User.objects.create_user(username=username,email='pepe@gmail.com',password=password)
+    #user.save()
 
     if username is None or password is None:
         return Response('Se requiere nombre de usuario y Contraseña', status= status.HTTP_400_BAD_REQUEST)
