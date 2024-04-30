@@ -126,3 +126,28 @@ def miperfil(request):
 
 def api_pet(request):
     return render (request,'web/api_pet.html')
+
+def reset_password(request):
+    if request.method == 'POST':
+        # Obtener el nombre de usuario y la nueva contraseña del formulario
+        username = request.POST.get('username')
+        new_password = request.POST.get('password')
+        
+        # Restablecer la contraseña del usuario en la base de datos
+        try:
+            user = User.objects.get(username=username)
+            user.set_password(new_password)
+            user.save()
+            # Redirigir a una página de confirmación o iniciar sesión nuevamente
+            return render(request, 'web/password_reset_success.html')
+        except User.DoesNotExist:
+            # Manejar el caso en el que no se encuentre el usuario
+            print("El usuario no existe.")
+            return render(request, 'web/password_reset_error.html')
+        except Exception as e:
+            # Capturar cualquier otro error y mostrarlo por pantalla
+            print("Error:", e)
+            return render(request, 'web/password_reset_error.html')
+    else:
+        # Si no es una solicitud POST, renderizar el formulario de restablecimiento de contraseña
+        return render(request, 'web/reset_password.html')

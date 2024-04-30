@@ -22,7 +22,7 @@
         <div class="card-header">
             <h2>Recupera tu Contraseña</h2> </div>
                 <div class="card-body">
-                    <form>
+                    <form class="row" action="{% url 'reset_pass' %}" method="post">
                         <div class="form-group">
                             <h3><label for="email">Correo Electrónico</label></h3>
                             <input type="email" class="form-control" id="email" placeholder="Ingresa tu correo electrónico">

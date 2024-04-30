@@ -2,7 +2,7 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 
-from .views import index, carro, producto, miperfil, recupera, user, base, cerrar_sesion, productos_perro, productos_gato, agregar_al_carrito, api_pet
+from .views import index, carro, producto, miperfil, recupera, user, base, cerrar_sesion, productos_perro, productos_gato, agregar_al_carrito, api_pet, reset_password
 
 urlpatterns = [
     path('', index, name="index"),
@@ -16,7 +16,8 @@ urlpatterns = [
     path('base/', base),
     path('cerrar-sesion/', cerrar_sesion, name="cerrar_sesion"),
     path('agregar-al-carrito/', agregar_al_carrito, name='agregar_al_carrito'),
-    path('api-pet/', api_pet, name="api_pet")
+    path('api-pet/', api_pet, name="api_pet"),
+    path('recupera/', reset_password, name="reset_pass"),
 ]
 
 if settings.DEBUG:
