@@ -22,12 +22,13 @@
         <div class="card-header">
             <h2>Recupera tu Contraseña</h2> </div>
                 <div class="card-body">
-                    <form>
+                    <form class="row" action="{% url 'reset' %}" method="post">
+                        {% csrf_token %}
                         <div class="form-group">
                             <h3><label for="email">Correo Electrónico</label></h3>
                             <input type="email" class="form-control" id="email" placeholder="Ingresa tu correo electrónico">
                         </div>
-                        <button type="submit" class="btn btn-primary btn-block">Iniciar Sesión</button>
+                        <button type="submit" class="btn btn-primary btn-block">Recuperar contraseña</button>
                     </form>
                 </div>
             </div>

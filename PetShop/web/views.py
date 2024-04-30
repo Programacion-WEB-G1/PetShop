@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.contrib.auth import logout
+from django.contrib.auth import logout,login, authenticate
 from django.http import JsonResponse
+from django.contrib.auth.models import User
 from .models import Usuario, Categoria, Producto
-
+from django.contrib.auth.models import User # angel modifico a ca
+from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
 
 def index(request):
@@ -13,14 +15,13 @@ def index(request):
         print("Datos del formulario", user_login, pass_login)
         try:
             usuarioBD = Usuario.objects.get(username=user_login)
-            if usuarioBD.password == pass_login:
-                if usuarioBD.perfil.perfil == "Administrador" or usuarioBD.perfil.perfil == "Usuario":
-                    print("Inicio de sesión exitoso")
+            if usuarioBD.perfil.perfil == "Administrador" or usuarioBD.perfil.perfil == "Usuario":
+                print("Inicio de sesión exitoso")
+                user = authenticate(username=user_login, password=pass_login)
+                user.data = usuarioBD
+                if user is not None:
+                    login(request, user)
                     return redirect('productos')  # Redirecciona a la página de productos
-                else:
-                    print("No se encontró un perfil adecuado")
-                    messages.error(request, "Perfil incorrecto")
-                    return render(request, 'web/index.html')
             else:
                 print("Contraseña incorrecta")
                 messages.error(request, "Contraseña incorrecta")
@@ -63,7 +64,8 @@ def user(request):
             direccion=direccion,
         )
         usuario.save()
-
+        user = User.objects.create_user(username, email, password)
+        user = user.save()
         return redirect('index')  # Redirecciona a la página de inicio
     else:
         return render(request, 'web/user_reg.html')
@@ -108,10 +110,51 @@ def recupera (request):
     return render (request,'web/recuperapass.html')
 
 def base (request):
-    return render (request,'web/base.html')
+    return render (request, 'web/base.html')
+
+def miperfil(request):
+  
+    usuarioBD = Usuario.objects.get(username=request.user)
+
+    datos = {
+        'name':usuarioBD.nombres,
+        'address':usuarioBD.direccion,
+        'email':usuarioBD.email,
+        'username': request.user,
+        'birthdate': usuarioBD.fechanac 
+    }
+    return render(request,'web/miperfil.html',datos)
 
 def api_pet(request):
     return render (request,'web/api_pet.html')
 
+@csrf_exempt
+def reset_password(request):
+
+    if request.method == 'POST':
+        # Obtener el nombre de usuario y la nueva contraseña del formulario
+        username = request.POST.get('username')
+        new_password = request.POST.get('password')
+        
+        # Restablecer la contraseña del usuario en la base de datos
+        try:
+            user = User.objects.get(username=username)
+            user.set_password(new_password)
+            user.save()
+            # Redirigir a una página de confirmación o iniciar sesión nuevamente
+            return render(request, 'web/password_reset_success.html')
+        except User.DoesNotExist:
+            # Manejar el caso en el que no se encuentre el usuario
+            print("El usuario no existe.")
+            return render(request, 'web/password_reset_error.html')
+        except Exception as e:
+            # Capturar cualquier otro error y mostrarlo por pantalla
+            print("Error:", e)
+            return render(request, 'web/password_reset_error.html')
+    else:
+        # Si no es una solicitud POST, renderizar el formulario de restablecimiento de contraseña
+        return render(request, 'web/reset_password.html')
+
 def api_pet2(request):
     return render (request,'web/api_pet2.html')
+
