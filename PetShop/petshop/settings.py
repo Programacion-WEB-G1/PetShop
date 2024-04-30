@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     'web',
     'bootstrap',
     'fontawesome',
+    'rest_framework',
+    'rest_api',
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
