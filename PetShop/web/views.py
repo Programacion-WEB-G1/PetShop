@@ -154,3 +154,7 @@ def reset_password(request):
     else:
         # Si no es una solicitud POST, renderizar el formulario de restablecimiento de contraseña
         return render(request, 'web/reset_password.html')
+
+def api_pet2(request):
+    return render (request,'web/api_pet2.html')
+

@@ -26,11 +26,15 @@
             <a class="btn btn-primary" href="/gato">Entrar</a>
         </div>
         <div class="product">
-            <h3>API FRONT Lista Razas Perros</h3>
+            <h3>API Lista Razas Perros</h3>
             <img src="{% static 'web/Imagenes/razas_perros.jpg' %}" alt="API">
             <a class="btn btn-primary" href="{% url 'api_pet' %}">Entrar</a>
         </div>
-    
+        <div class="product">
+            <h3>API Lista Razas Gatos</h3>
+            <img src="{% static 'web/Imagenes/razas_gatos.jpg' %}" alt="API">
+            <a class="btn btn-primary" href="{% url 'api_pet2' %}">Entrar</a>
+        </div>    
     </section>
     <footer>
         <p>&copy; 2024 Tienda de Mascotas. Todos los derechos reservados.</p>
