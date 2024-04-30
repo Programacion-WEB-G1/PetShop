@@ -37,6 +37,25 @@
     text-align: center;
 }
 
+.cat-image {
+    max-width: 200px; 
+    max-height: 200px; 
+    display: block; 
+    margin: auto; 
+    margin-bottom: 10px; 
+}
+
+.cat-breed-card {
+    width: calc(33.33% - 20px); 
+    margin: 10px; 
+    text-align: center; 
+    display: inline-block; 
+}
+
+.cat-breeds-container {
+    text-align: center;
+}
+
 h1 {
     text-align: center;
 }

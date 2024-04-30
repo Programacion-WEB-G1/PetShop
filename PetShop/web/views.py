@@ -112,3 +112,6 @@ def base (request):
 
 def api_pet(request):
     return render (request,'web/api_pet.html')
+
+def api_pet2(request):
+    return render (request,'web/api_pet2.html')
