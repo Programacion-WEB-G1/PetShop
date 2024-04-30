@@ -4,7 +4,8 @@ from django.contrib.auth import logout,login, authenticate
 from django.http import JsonResponse
 from django.contrib.auth.models import User
 from .models import Usuario, Categoria, Producto
-
+from django.contrib.auth.models import User # angel modifico a ca
+from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
 
 def index(request):
@@ -127,7 +128,9 @@ def miperfil(request):
 def api_pet(request):
     return render (request,'web/api_pet.html')
 
+@csrf_exempt
 def reset_password(request):
+
     if request.method == 'POST':
         # Obtener el nombre de usuario y la nueva contraseña del formulario
         username = request.POST.get('username')

@@ -1,7 +1,6 @@
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-
 from .views import index, carro, producto, miperfil, recupera, user, base, cerrar_sesion, productos_perro, productos_gato, agregar_al_carrito, api_pet, reset_password
 
 urlpatterns = [
@@ -17,7 +16,7 @@ urlpatterns = [
     path('cerrar-sesion/', cerrar_sesion, name="cerrar_sesion"),
     path('agregar-al-carrito/', agregar_al_carrito, name='agregar_al_carrito'),
     path('api-pet/', api_pet, name="api_pet"),
-    path('recupera/', reset_password, name="reset_pass"),
+    path('recupera/', reset_password, name="reset")
 ]
 
 if settings.DEBUG:
