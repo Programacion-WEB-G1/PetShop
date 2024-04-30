@@ -1,7 +1,8 @@
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-from .views import index, carro, producto, perfil, recupera, user, base, cerrar_sesion, productos_perro, productos_gato, agregar_al_carrito, api_pet
+
+from .views import index, carro, producto, miperfil, recupera, user, base, cerrar_sesion, productos_perro, productos_gato, agregar_al_carrito, api_pet
 
 urlpatterns = [
     path('', index, name="index"),
@@ -10,7 +11,7 @@ urlpatterns = [
     path('producto/', producto, name="productos"),
     path('perro/', productos_perro, name='productos_perro'),
     path('recupera/', recupera),
-    path('perfil/', perfil),
+    path('perfil/', miperfil),
     path('user/', user, name="user"),
     path('base/', base),
     path('cerrar-sesion/', cerrar_sesion, name="cerrar_sesion"),
