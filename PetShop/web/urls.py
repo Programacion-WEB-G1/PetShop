@@ -19,6 +19,5 @@ urlpatterns = [
     path('recupera/', reset_password, name="reset"),
     path('api-pet2/', api_pet2, name="api_pet2"),
 ]
-
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
