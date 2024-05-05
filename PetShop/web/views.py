@@ -30,6 +30,12 @@ def index(request):
             print("Usuario no encontrado")
             messages.error(request, "Usuario no encontrado")
             return render(request, 'web/index.html')
+        
+        except:
+            print("Usuario no encontrado")
+            messages.error(request, "Usuario no encontrado")
+            return render(request, 'web/index.html')
+     
     else:
         return render(request, 'web/index.html')
 
